@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    class Mouse{
+        constructor(name, weight, speed){
+            this.name=name;
+            this.weight=weight;
+            this.speed=speed;
+            this.alive=true;
+        }
+        say(string){
+            this.string=string;
+            return this.name+': '+this.string;
+        }
+        checkStatus(){
+            if(this.alive){
+                return(this.name+' is alive');
+            }
+            else{
+                return this.name+' was dead';
+            }
+        }
+        getWeight(){
+            return  this.name+' weight: '+this.weight;
+        }
+        getSpeed(){
+            return this.name+' speed: '+this.speed
+        }
+    }
+    class Cat{
+        constructor(name_cat, weight_cat, speed_cat){
+            this.name_cat=name_cat;
+            this.weight_cat=weight_cat;
+            this.speed_cat=speed_cat;
+        }
+        say(string_cat){
+            this.string_cat=string_cat;
+            return this.name_cat+': '+this.string_cat;
+        }
+        getMouse(target_cat){
+            this.target_cat=target_cat;
+            if (this.speed_cat>this.target_cat.speed){
+                this.status=true;
+                return this.status;
+            }
+            else if (this.speed_cat>this.target_cat.speed){
+                this.status=false;
+                return this.status;
+            }
+        }
+        eatMouse(){
+            if (this.status==true && this.target_cat.alive==true){
+                this.target_cat.alive=false;
+                this.weight_cat+= this.target_cat.weight;
+            }
+            else if(this.status==false && this.target_cat.alive==true){
+                document.write('Cat is too slow'+'<br>');
+            }
+            else if (this.status==true && this.target_cat.alive==false){
+                document.write("Dead mouse can't be eaten"+'<br>');
+            }
+        }
+        getWeight_Cat(){
+            return this.name_cat+' weight: '+this.weight_cat;
+        }
+        getSpeed_Cat(){
+            return this.name_cat+' speed: '+this.speed_cat
+        }
+    }
+    let Jerry= new Mouse('Jerry',5,10);
+    let Tom= new Cat('Tom',20,15);
+    document.write(Jerry.say('hello')+'<br>'); 
+    document.write(Tom.say('hello')+'<br>');
+    document.write(Tom.getWeight_Cat()+'<br>');
+    document.write(Jerry.checkStatus()+'<br>');
+    Tom.getMouse(Jerry);
+    Tom.eatMouse();
+    document.write(Tom.getWeight_Cat()+'<br>');
+    document.write(Jerry.checkStatus()+'<br>');
+    Tom.eatMouse();
+</script>
